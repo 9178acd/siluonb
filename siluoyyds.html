@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>罗林锐的特别页面</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        accent: '#FFD166',
+                    },
+                    fontFamily: {
+                        fun: ['Comic Sans MS', 'cursive', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .rotate-random {
+                transform: rotate(var(--rotation, 0deg));
+            }
+            .float {
+                animation: float 3s ease-in-out infinite;
+            }
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-15px); }
+                100% { transform: translateY(0px); }
+            }
+            .shake {
+                animation: shake 0.5s;
+            }
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+            .confetti {
+                position: fixed;
+                width: 10px;
+                height: 10px;
+                background-color: #f00;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-blue-100 min-h-screen overflow-x-hidden">
+    <!-- 顶部导航栏 -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-md fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-fun font-bold text-primary">罗林锐的专属页面</h1>
+            <div class="flex space-x-4">
+                <button class="nav-btn px-4 py-2 rounded-full bg-secondary text-white font-fun hover:bg-secondary/80 transition-all" data-target="about">关于</button>
+                <button class="nav-btn px-4 py-2 rounded-full bg-accent text-gray-800 font-fun hover:bg-accent/80 transition-all" data-target="achievements">成就</button>
+                <button class="nav-btn px-4 py-2 rounded-full bg-primary text-white font-fun hover:bg-primary/80 transition-all" data-target="gallery">相册</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 pt-24 pb-16">
+        <!-- 欢迎部分 -->
+        <section id="welcome" class="text-center py-12 mb-16">
+            <div class="relative inline-block">
+                <h2 class="text-[clamp(2.5rem,5vw,4rem)] font-fun font-bold text-primary text-shadow mb-6 float">
+                    欢迎，罗林锐！
+                </h2>
+                <div class="absolute -top-6 -right-6 text-5xl text-accent rotate-12">
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-700 max-w-2xl mx-auto mb-8">
+                这个特别的网站是专门为你创建的！准备好体验一些惊喜了吗？
+            </p>
+            <button id="start-button" class="px-8 py-4 bg-primary text-white rounded-full text-xl font-fun shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                开始探索 <i class="fa fa-arrow-right ml-2"></i>
+            </button>
+        </section>
+
+        <!-- 关于部分 -->
+        <section id="about" class="hidden mb-16 bg-white rounded-2xl shadow-xl p-8 transform transition-all duration-500 hover:shadow-2xl">
+            <h3 class="text-3xl font-fun font-bold text-primary mb-6">关于罗林锐</h3>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <p class="text-gray-700 mb-4">罗林锐是一个了不起的人！他以[此处可添加幽默特质]而闻名，总是能[此处可添加玩笑特长]。</p>
+                    <p class="text-gray-700 mb-4">朋友们都说，罗林锐的[此处可添加搞笑习惯]是最令人印象深刻的。无论何时何地，他总能[此处可添加有趣能力]。</p>
+                    <p class="text-gray-700">据说，罗林锐曾经[此处可添加夸张搞笑事迹]，从此成为了传奇！</p>
+                    
+                    <div class="mt-8">
+                        <button id="secret-button" class="px-6 py-2 bg-secondary text-white rounded-full font-fun hover:bg-secondary/80 transition-all">
+                            点击查看罗林锐的秘密 <i class="fa fa-eye ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div id="profile-pic" class="w-full h-80 bg-gray-200 rounded-xl overflow-hidden shadow-lg">
+                        <img src="https://picsum.photos/seed/luolinrui/600/400" alt="罗林锐的照片（示例图）" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
+                    </div>
+                    <div class="absolute -bottom-4 -left-4 bg-accent text-gray-800 px-4 py-2 rounded-full font-fun shadow-md rotate-random" style="--rotation: -5deg;">
+                        未来之星！
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 成就部分 -->
+        <section id="achievements" class="hidden mb-16">
+            <h3 class="text-3xl font-fun font-bold text-primary mb-8 text-center">罗林锐的"辉煌"成就</h3>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 成就卡片 1 -->
+                <div class="achievement-card bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="text-4xl text-accent mb-4">
+                        <i class="fa fa-trophy"></i>
+                    </div>
+                    <h4 class="text-xl font-fun font-bold mb-2">最佳迟到奖</h4>
+                    <p class="text-gray-600">以每次都能精准迟到3分钟而闻名，从不早到也不迟到太久。</p>
+                    <div class="mt-4 text-sm text-gray-500">获得时间: 2023年</div>
+                </div>
+                
+                <!-- 成就卡片 2 -->
+                <div class="achievement-card bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-cutlery"></i>
+                    </div>
+                    <h4 class="text-xl font-fun font-bold mb-2">零食鉴赏家</h4>
+                    <p class="text-gray-600">能准确分辨出不同品牌薯片的细微差别，堪称零食界的专家。</p>
+                    <div class="mt-4 text-sm text-gray-500">获得时间: 2022年</div>
+                </div>
+                
+                <!-- 成就卡片 3 -->
+                <div class="achievement-card bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="text-4xl text-secondary mb-4">
+                        <i class="fa fa-gamepad"></i>
+                    </div>
+                    <h4 class="text-xl font-fun font-bold mb-2">游戏连败纪录保持者</h4>
+                    <p class="text-gray-600">创造了连续输掉37场游戏的惊人纪录，无人能破。</p>
+                    <div class="mt-4 text-sm text-gray-500">获得时间: 2021年</div>
+                </div>
+                
+                <!-- 成就卡片 4 -->
+                <div class="achievement-card bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="text-4xl text-purple-500 mb-4">
+                        <i class="fa fa-sleepy-o"></i>
+                    </div>
+                    <h4 class="text-xl font-fun font-bold mb-2">最佳午睡大师</h4>
+                    <p class="text-gray-600">能在任何环境下迅速入睡，并在被叫醒前恰好完成一个完整的梦。</p>
+                    <div class="mt-4 text-sm text-gray-500">获得时间: 2023年</div>
+                </div>
+                
+                <!-- 成就卡片 5 -->
+                <div class="achievement-card bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="text-4xl text-green-500 mb-4">
+                        <i class="fa fa-utensils"></i>
+                    </div>
+                    <h4 class="text-xl font-fun font-bold mb-2">泡面达人</h4>
+                    <p class="text-gray-600">能泡出完美硬度的方便面，被称为"泡面界的艺术家"。</p>
+                    <div class="mt-4 text-sm text-gray-500">获得时间: 2022年</div>
+                </div>
+                
+                <!-- 成就卡片 6 -->
+                <div class="achievement-card bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div class="text-4xl text-yellow-500 mb-4">
+                        <i class="fa fa-mobile"></i>
+                    </div>
+                    <h4 class="text-xl font-fun font-bold mb-2">手机电量预测师</h4>
+                    <p class="text-gray-600">总能精准预测手机电量耗尽的时间，误差不超过30秒。</p>
+                    <div class="mt-4 text-sm text-gray-500">获得时间: 2023年</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 相册部分 -->
+        <section id="gallery" class="hidden mb-16">
+            <h3 class="text-3xl font-fun font-bold text-primary mb-8 text-center">罗林锐的精彩瞬间</h3>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- 相册图片，点击会有惊喜 -->
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer aspect-square">
+                    <img src="https://picsum.photos/seed/luo1/300/300" alt="罗林锐的照片1（示例图）" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-fun">点击查看</span>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer aspect-square">
+                    <img src="https://picsum.photos/seed/luo2/300/300" alt="罗林锐的照片2（示例图）" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-fun">点击查看</span>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer aspect-square">
+                    <img src="https://picsum.photos/seed/luo3/300/300" alt="罗林锐的照片3（示例图）" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-fun">点击查看</span>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer aspect-square">
+                    <img src="https://picsum.photos/seed/luo4/300/300" alt="罗林锐的照片4（示例图）" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-fun">点击查看</span>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer aspect-square">
+                    <img src="https://picsum.photos/seed/luo5/300/300" alt="罗林锐的照片5（示例图）" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-fun">点击查看</span>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer aspect-square">
+                    <img src="https://picsum.photos/seed/luo6/300/300" alt="罗林锐的照片6（示例图）" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-fun">点击查看</span>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer aspect-square">
+                    <img src="https://picsum.photos/seed/luo7/300/300" alt="罗林锐的照片7（示例图）" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-fun">点击查看</span>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-md cursor-pointer aspect-square">
+                    <img src="https://picsum.photos/seed/luo8/300/300" alt="罗林锐的照片8（示例图）" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="text-white font-fun">点击查看</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 互动部分 -->
+        <section id="interaction" class="text-center py-12">
+            <h3 class="text-3xl font-fun font-bold text-primary mb-8">与罗林锐互动</h3>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-8">
+                <p class="text-gray-700 mb-6">罗林锐的幸运指数是多少？点击下方按钮测试！</p>
+                
+                <div class="flex justify-center mb-8">
+                    <button id="luck-button" class="px-8 py-4 bg-accent text-gray-800 rounded-full text-xl font-fun shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                        测试幸运指数 <i class="fa fa-random ml-2"></i>
+                    </button>
+                </div>
+                
+                <div id="luck-result" class="hidden">
+                    <div class="text-5xl mb-4" id="luck-score">0%</div>
+                    <p class="text-gray-600" id="luck-description"></p>
+                </div>
+                
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <p class="text-gray-700 mb-4">给罗林锐留个消息吧：</p>
+                    <textarea id="message-input" class="w-full p-4 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-primary" rows="3" placeholder="输入你想对罗林锐说的话..."></textarea>
+                    <button id="send-message" class="px-6 py-2 bg-primary text-white rounded-full font-fun hover:bg-primary/80 transition-all">
+                        发送消息 <i class="fa fa-paper-plane ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="font-fun mb-2">这个网站纯属娱乐，希望罗林锐不要生气哦！</p>
+            <p class="text-gray-400 text-sm">© 2023 罗林锐整蛊俱乐部 版权所有</p>
+        </div>
+    </footer>
+
+    <!-- 弹窗 -->
+    <div id="prank-modal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl">
+                <i class="fa fa-times"></i>
+            </button>
+            <div id="modal-content" class="text-center">
+                <!-- 弹窗内容会通过JS动态填充 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM元素
+        const startButton = document.getElementById('start-button');
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const sections = {
+            about: document.getElementById('about'),
+            achievements: document.getElementById('achievements'),
+            gallery: document.getElementById('gallery')
+        };
+        const welcomeSection = document.getElementById('welcome');
+        const secretButton = document.getElementById('secret-button');
+        const luckButton = document.getElementById('luck-button');
+        const luckResult = document.getElementById('luck-result');
+        const luckScore = document.getElementById('luck-score');
+        const luckDescription = document.getElementById('luck-description');
+        const sendMessageButton = document.getElementById('send-message');
+        const messageInput = document.getElementById('message-input');
+        const prankModal = document.getElementById('prank-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalContent = document.getElementById('modal-content');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const navbar = document.getElementById('navbar');
+        const profilePic = document.getElementById('profile-pic');
+
+        // 导航功能
+        startButton.addEventListener('click', () => {
+            welcomeSection.classList.add('hidden');
+            sections.about.classList.remove('hidden');
+            window.scrollTo(0, 0);
+            
+            // 添加一些随机的颜色变化效果
+            setTimeout(() => {
+                navbar.classList.add('bg-primary/90');
+                navbar.classList.remove('bg-white/80');
+            }, 500);
+        });
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 隐藏所有部分
+                Object.values(sections).forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                // 显示目标部分
+                const target = button.getAttribute('data-target');
+                sections[target].classList.remove('hidden');
+                window.scrollTo(0, 0);
+                
+                // 随机改变导航栏颜色
+                const colors = ['bg-primary/90', 'bg-secondary/90', 'bg-accent/90'];
+                navbar.className = 'fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-md backdrop-blur-md';
+                navbar.classList.add(colors[Math.floor(Math.random() * colors.length)]);
+            });
+        });
+
+        // 秘密按钮功能
+        secretButton.addEventListener('click', () => {
+            showModal(`
+                <h3 class="text-2xl font-fun font-bold text-primary mb-4">罗林锐的终极秘密</h3>
+                <p class="mb-4">其实...罗林锐最怕的是...</p>
+                <div class="text-xl font-fun text-accent mb-6">小！蜘！蛛！</div>
+                <img src="https://picsum.photos/seed/spider/300/200" alt="一只可爱的小蜘蛛图片" class="rounded-lg mx-auto mb-4">
+                <p class="text-gray-600 text-sm">别担心，这只是个玩笑！</p>
+            `);
+            
+            // 让头像摇晃
+            profilePic.classList.add('shake');
+            setTimeout(() => {
+                profilePic.classList.remove('shake');
+            }, 500);
+        });
+
+        // 幸运指数功能
+        luckButton.addEventListener('click', () => {
+            // 生成一个随机的幸运指数，偏向搞笑的低分
+            const luck = Math.floor(Math.random() * 30) + 1;
+            
+            // 显示结果
+            luckScore.textContent = `${luck}%`;
+            
+            // 根据幸运值设置颜色
+            if (luck < 10) {
+                luckScore.className = 'text-5xl mb-4 text-red-500';
+                luckDescription.textContent = '今天可能不是你的幸运日哦，罗林锐！';
+            } else if (luck < 20) {
+                luckScore.className = 'text-5xl mb-4 text-orange-500';
+                luckDescription.textContent = '运气一般般，罗林锐，明天会更好！';
+            } else {
+                luckScore.className = 'text-5xl mb-4 text-green-500';
+                luckDescription.textContent = '哇，罗林锐，今天你的运气还不错！';
+            }
+            
+            luckResult.classList.remove('hidden');
+            
+            // 添加动画效果
+            luckScore.classList.add('shake');
+            setTimeout(() => {
+                luckScore.classList.remove('shake');
+            }, 500);
+            
+            // 如果运气特别低，放烟花庆祝
+            if (luck < 5) {
+                createConfetti();
+            }
+        });
+
+        // 发送消息功能
+        sendMessageButton.addEventListener('click', () => {
+            const message = messageInput.value.trim();
+            
+            if (message) {
+                showModal(`
+                    <h3 class="text-2xl font-fun font-bold text-primary mb-4">消息已发送！</h3>
+                    <p class="mb-4">你对罗林锐说：</p>
+                    <div class="bg-gray-100 p-4 rounded-lg mb-6 font-fun">${message}</div>
+                    <p class="text-gray-600">罗林锐表示："哈哈，太好笑了！"</p>
+                `);
+                messageInput.value = '';
+            } else {
+                showModal(`
+                    <h3 class="text-2xl font-fun font-bold text-primary mb-4">哦不！</h3>
+                    <p>你还没有输入任何消息呢，罗林锐在等你的话哦！</p>
+                `);
+            }
+        });
+
+        // 相册项目点击事件
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                // 随机决定是显示正常图片还是整蛊图片
+                const isPrank = Math.random() > 0.5;
+                
+                if (isPrank) {
+                    // 整蛊图片
+                    showModal(`
+                        <h3 class="text-2xl font-fun font-bold text-primary mb-4">惊喜！</h3>
+                        <img src="https://picsum.photos/seed/prank${index}/400/300" alt="一个有趣的整蛊图片" class="rounded-lg mx-auto mb-4">
+                        <p class="text-gray-600">哈哈，被我骗到了吧，罗林锐！</p>
+                    `);
+                    
+                    // 播放一个有趣的音效
+                    playFunnySound();
+                } else {
+                    // 正常图片
+                    showModal(`
+                        <h3 class="text-2xl font-fun font-bold text-primary mb-4">精彩瞬间 #${index + 1}</h3>
+                        <img src="https://picsum.photos/seed/luo${index + 1}/400/300" alt="罗林锐的照片（示例图）" class="rounded-lg mx-auto mb-4">
+                        <p class="text-gray-600">这张照片太酷了！</p>
+                    `);
+                }
+            });
+        });
+
+        // 弹窗功能
+        function showModal(content) {
+            modalContent.innerHTML = content;
+            prankModal.classList.remove('hidden');
+            
+            // 阻止背景滚动
+            document.body.style.overflow = 'hidden';
+        }
+
+        closeModal.addEventListener('click', () => {
+            prankModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        // 点击弹窗外部关闭弹窗
+        prankModal.addEventListener('click', (e) => {
+            if (e.target === prankModal) {
+                prankModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // 创建彩色纸屑效果
+        function createConfetti() {
+            const colors = ['#FF6B6B', '#4ECDC4', '#FFD166', '#7B68EE', '#06D6A0', '#118AB2'];
+            const confettiCount = 100;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // 随机颜色、位置和大小
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = `-${Math.random() * 20 + 10}px`;
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = `${Math.random() * 10 + 5}px`;
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                document.body.appendChild(confetti);
+                
+                // 动画
+                const duration = Math.random() * 3 + 2;
+                confetti.animate([
+                    { transform: `translateY(0) rotate(${Math.random() * 360}deg)`, opacity: 1 },
+                    { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: duration * 1000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
+                });
+                
+                // 动画结束后移除元素
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000);
+            }
+        }
+
+        // 播放有趣的音效（模拟）
+        function playFunnySound() {
+            // 这里只是模拟音效播放
+            console.log('播放有趣的音效');
+        }
+
+        // 页面滚动时改变导航栏样式
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2');
+            }
+        });
+
+        // 随机改变一些元素的旋转角度
+        document.querySelectorAll('.rotate-random').forEach(el => {
+            if (!el.style.getPropertyValue('--rotation')) {
+                const rotation = (Math.random() * 10) - 5; // -5到5度之间
+                el.style.setProperty('--rotation', `${rotation}deg`);
+            }
+        });
+    </script>
+</body>
+</html>
